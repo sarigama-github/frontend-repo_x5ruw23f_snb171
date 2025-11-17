@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Car, Settings, Gauge, Users } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
 import Hero from './components/Hero'
 import StepPanel, { useSuggestions } from './components/StepPanel'
 
@@ -28,18 +27,18 @@ function App() {
   const panels = [
     {
       key: 'make',
-      title: 'What’s your car make?',
-      description: 'Start typing — we’ll suggest the most likely options based on popular choices in your region.',
+      title: 'Car make',
+      description: 'Choose the brand of your car.',
       options: makes,
       icon: Car,
       value: selections.make,
       onChange: setField('make'),
-      hint: 'AI suggests top makes'
+      hint: 'Top makes near you'
     },
     {
       key: 'model',
-      title: 'Now the model',
-      description: 'Smart filtering narrows models based on your make. Try a few letters.',
+      title: 'Car model',
+      description: 'Refined based on your chosen make.',
       options: models,
       icon: Settings,
       value: selections.model,
@@ -49,7 +48,7 @@ function App() {
     {
       key: 'year',
       title: 'Year of manufacture',
-      description: 'We’ll optimize premiums based on age and safety ratings.',
+      description: 'Select the year your car was made.',
       options: years,
       icon: Gauge,
       value: selections.year,
@@ -59,7 +58,7 @@ function App() {
     {
       key: 'cylinder',
       title: 'Engine cylinders',
-      description: 'Higher displacement may affect premiums. Choose what matches your vehicle.',
+      description: 'Choose your engine configuration.',
       options: cylinders,
       icon: Gauge,
       value: selections.cylinder,
@@ -67,8 +66,8 @@ function App() {
     },
     {
       key: 'seats',
-      title: 'How many seats?',
-      description: 'We personalize coverage assuming typical occupancy and usage patterns.',
+      title: 'Number of seats',
+      description: 'How many seats does your car have?',
       options: seats,
       icon: Users,
       value: selections.seats,
@@ -77,7 +76,7 @@ function App() {
   ]
 
   return (
-    <div ref={scrollRef} className="h-screen w-full overflow-y-scroll snap-y snap-mandatory">
+    <div ref={scrollRef} className="h-screen w-full overflow-y-scroll snap-y snap-mandatory bg-[#030a1a]">
       <Hero onStart={() => setStarted(true)} />
 
       {panels.map((p, i) => (
@@ -100,11 +99,11 @@ function App() {
         />
       ))}
 
-      <section className="snap-start h-screen bg-[#030a1a] flex items-center justify-center px-6">
+      <section className="snap-start h-screen bg-[#071226] flex items-center justify-center px-6">
         <div className="max-w-2xl text-center">
           <h3 className="text-3xl md:text-4xl font-semibold text-white">You’re all set</h3>
           <p className="mt-4 text-sky-200/90">We’ll crunch the numbers and surface tailored plans. Ready to view your quotes?</p>
-          <button className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-6 py-3 text-white shadow-lg shadow-sky-500/30 transition hover:shadow-indigo-500/40 focus:outline-none focus:ring-2 focus:ring-sky-300">
+          <button className="mt-8 inline-flex items-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-6 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-300">
             View my quotes
           </button>
         </div>
